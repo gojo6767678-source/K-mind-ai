@@ -1,0 +1,2 @@
+# K-mind-ai
+K MIND AI -- YOUR PERSONAL AI ASSISTANT 
