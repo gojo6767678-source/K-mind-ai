@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#101326">
+<title>K MIND AI</title>
+<style>
+:root{--bg:#101326;--panel:#191d34;--gold:#e4b85f;--gold2:#f3d48b;--text:#f7f3e9;--muted:#aaaabd}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;min-height:100vh}
+header{height:72px;display:flex;align-items:center;gap:12px;padding:10px 22px;border-bottom:1px solid #34334a;background:#101326}
+header img{width:48px;height:48px;object-fit:cover;border-radius:50%;border:1px solid var(--gold)}
+.brand{font-weight:800;letter-spacing:2px;color:var(--gold2);font-size:19px}
+main{max-width:850px;margin:0 auto;padding:35px 18px 120px}
+.hero{text-align:center;margin:18px auto 28px}
+.hero img{width:125px;height:125px;object-fit:cover;border-radius:50%;border:2px solid var(--gold);box-shadow:0 0 28px #d9a84c33}
+h1{font-size:32px;margin:15px 0 8px;color:var(--gold2)}.sub{color:var(--muted);font-size:15px}
+.chat{background:var(--panel);border:1px solid #393750;border-radius:18px;min-height:280px;padding:18px;margin-top:24px}
+.message{padding:13px 15px;border-radius:14px;line-height:1.5;margin:10px 0;max-width:88%;white-space:pre-wrap}
+.bot{background:#252943;border:1px solid #3a3d57}.user{background:#594726;color:#fff2d4;margin-left:auto}
+.composer{position:fixed;bottom:0;left:0;right:0;padding:14px 18px calc(14px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--bg) 22%);display:flex;justify-content:center}
+form{width:min(850px,100%);display:flex;gap:9px;background:#1b1f37;border:1px solid #5b513f;border-radius:16px;padding:9px}
+input{flex:1;min-width:0;background:transparent;border:0;outline:0;color:white;font-size:16px;padding:8px}
+button{background:var(--gold);color:#171525;border:0;border-radius:11px;padding:0 18px;font-weight:700;cursor:pointer}
+button:hover{background:var(--gold2)}.note{text-align:center;color:#85859b;font-size:12px;margin-top:12px}
+@media(max-width:520px){main{padding-top:20px}.hero img{width:105px;height:105px}h1{font-size:27px}.chat{padding:12px}.message{max-width:95%}}
+</style>
+</head>
+<body>
+<header><img src="logo.jpg" alt="K MIND crown logo"><div class="brand">K MIND AI</div></header>
+<main>
+<section class="hero">
+<img src="logo.jpg" alt="K MIND AI logo">
+<h1>Welcome to K MIND AI</h1>
+<div class="sub">Your ideas. Your questions. One intelligent assistant.</div>
+</section>
+<section class="chat" id="chat" aria-live="polite">
+<div class="message bot">Hello! I'm K MIND AI. 👑<br>Ask me anything. This is the first website prototype; live AI answers will work after an AI service is securely connected.</div>
+</section>
+<div class="note">Prototype preview · AI connection not yet configured</div>
+</main>
+<div class="composer">
+<form id="form">
+<input id="prompt" autocomplete="off" placeholder="Message K MIND AI..." aria-label="Message K MIND AI">
+<button type="submit">Send</button>
+</form>
+</div>
+<script>
+const form=document.getElementById('form'), input=document.getElementById('prompt'), chat=document.getElementById('chat');
+form.addEventListener('submit',e=>{
+ e.preventDefault(); const value=input.value.trim(); if(!value)return;
+ const user=document.createElement('div'); user.className='message user'; user.textContent=value; chat.appendChild(user);
+ const reply=document.createElement('div'); reply.className='message bot';
+ reply.textContent='Thanks for trying K MIND AI! The chat interface is ready. To generate real AI answers, the next step is connecting an AI model through a secure backend (never put a secret API key in this page).';
+ chat.appendChild(reply); input.value=''; chat.scrollTop=chat.scrollHeight;
+});
+</script>
+</body>
+</html>
